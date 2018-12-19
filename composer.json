@@ -1,0 +1,21 @@
+{
+    "name": "tjdsneto/jcnet-crawler",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Tiago Neto",
+            "email": "tjdsneto@gmail.com"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^7.1.3",
+        "fabpot/goutte": "^3.2",
+        "tightenco/collect": "^5.7"
+    },
+    "autoload": {
+        "psr-0": {
+            "tjdsneto\\JCNetCrawler": "src"
+        }
+    }
+}
