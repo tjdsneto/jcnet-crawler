@@ -88,7 +88,6 @@ class Cinema
                 'pg_rate' => $extraInfo['pg_rate'] ?? 'not set',
                 'week_number' => 1,
                 'raw_schedule' => $rawSchedules,
-                'raw_schedule_2' => $parsedSchedule,
                 'parsed_schedule' => $this->formatSchedule($parsedSchedule),
             ];
         });
