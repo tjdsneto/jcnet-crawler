@@ -71,7 +71,7 @@ class Cinema
                 }
             });
 
-            $parsedSchedule = $this->parseRawSchedule($rawSchedules);
+            // $parsedSchedule = $this->parseRawSchedule($rawSchedules);
 
             $movies[] = [
                 'title' => $node->filter('tr:nth-child(1) > td:nth-child(1)')->text(),
@@ -88,7 +88,7 @@ class Cinema
                 'pg_rate' => $extraInfo['pg_rate'] ?? 'not set',
                 'week_number' => 1,
                 'raw_schedule' => $rawSchedules,
-                'parsed_schedule' => $this->formatSchedule($parsedSchedule),
+                // 'parsed_schedule' => $this->formatSchedule($parsedSchedule),
             ];
         });
 
@@ -134,6 +134,18 @@ class Cinema
 
     private function parseWeekDays($schedule = '') : array
     {
+        /**
+         * Examples:
+         * 
+         * Sala 5: 21h15 (quinta, sexta, sábado e domingo)
+         * Sala 1: 13h10 (quinta a segunda, quarta); 14h50 (terça)
+         * Sala 4: 14h30 – 16h40 terça, 25-12; 13h05 – 15h10 – 17h15 quarta
+         * Sala 1: 13h, 15h, 17h e 19h (quinta, sexta, sábado e domingo); 14h e 16h (segunda, 24-12)
+         * Sala 4: 12h30, 14h45, 17h15 (exceto segunda, 24-12), 19h45 (exceto segunda, 24-12) e 22h (exceto segunda, 24-12)
+         * Sala 4: 13h30 – 16h15 – 19h – 22h quinta a domingo; 13h20 e 16h segunda; 22h50 – 23h25 terça e quarta
+         * Sala 2: 13h – 15h30 – 18h00 – 20:30 quinta a domingo, quarta; 13h – 15h30 segunda; 15h30 – 18h – 20h30 terça
+         * 
+         */
         $weekDays = [
             ['domingo'],
             ['segunda', 'segunda-feira', 'segundafeira'],
